@@ -9,7 +9,11 @@ int main(int argc, char* argv[]) {
     }
 
     std::string filename = argv[1]; // 获取文件名
+<<<<<<< HEAD
     std::string command = "g++ " + filename + ".cpp -o " + filename + ".exe -O2 -Wall -Wextra -std=c++14 -Wl,--stack=256000000"; // 构建编译命令
+=======
+    std::string command = "g++ " + filename + ".cpp -o " + filename + ".exe -O2 -Wall -Wextra -std=c++14"; // 构建编译命令
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
 
     std::cout << "Compiling " << filename << "..." << std::endl;
 

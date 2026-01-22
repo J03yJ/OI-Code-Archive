@@ -46,17 +46,25 @@ signed main(){
 	ull s=0;
 	DFS1(1);
 	for(int i=1;i<=m;i++){
+<<<<<<< HEAD
 		if(u[i]==fa[v[i]]||v[i]==fa[u[i]]) continue ;
 		w[i]=rng();
 		d[u[i]]^=w[i];
 		d[v[i]]^=w[i];
 		cout<<" : "<<i<<' '<<w[i]<<endl;
+=======
+		if(abs(dep[u[i]]-dep[v[i]])<=1) continue ;
+		w[i]=rng();
+		d[u[i]]^=w[i];
+		d[v[i]]^=w[i];
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
 		if(~(dep[u[i]]+dep[v[i]])&1) s^=w[i];
 	}
 	DFS2(1);
 
 	if(!s) cout<<1<<endl;
 	else{
+<<<<<<< HEAD
 		ll ans=0;
 		map<ull,int> cnt;
 		for(int i=1;i<=m;i++){
@@ -65,6 +73,16 @@ signed main(){
 			cnt[w[i]]++;
 		}
 		cout<<ans<<endl;
+=======
+		ll ans1=0,ans2=0;
+		map<ull,int> cnt;
+		for(int i=1;i<=m;i++){
+			if(w[i]==s) ans1++;
+			else ans2+=cnt[s^w[i]];
+			cnt[w[i]]++;
+		}
+		cout<<(ans1?ans1:ans2)<<endl;
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
 	}
 
 	return 0;

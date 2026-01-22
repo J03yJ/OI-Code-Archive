@@ -3632,6 +3632,7 @@ signed main(){
 
 	return 0;
 }
+<<<<<<< HEAD
 ```
 
 ## Stage 11: Grand Prix of Southeastern Europe
@@ -3657,3 +3658,6 @@ signed main(){
 ### *H. Akari Counting
 
 ### *K. Two-Way Communication
+=======
+```
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db

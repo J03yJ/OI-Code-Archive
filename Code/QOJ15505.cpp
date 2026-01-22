@@ -39,7 +39,11 @@ inline void Merge(int x,int y){
 			ext[x]=1,pl[x]=0,now[pr[x]]=pl[x];
 		}
 	}else{
+<<<<<<< HEAD
 		if(siz[x]>siz[y]) swap(x,y);
+=======
+		if(siz[x]<siz[y]) swap(x,y);
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
 		Record(fa[y]),Record(siz[x]),Record(pl[x]),Record(pr[x]),Record(ext[x]);
 		Necord(pr[x]),Necord(pr[y]);
 		tmp.push_back(pr[x]);
@@ -52,7 +56,10 @@ inline void Merge(int x,int y){
 		ext[x]|=ext[y];
 		if(ext[x]) pl[x]=0;
 		now[pr[x]]=pl[x];
+<<<<<<< HEAD
 		// cerr<<" : "<<pr[x]<<" <- "<<pl[x]<<endl;
+=======
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
 	}
 }
 
@@ -69,13 +76,19 @@ inline void Conquer(int x,int L,int R){
 	for(auto p:e[x]) Merge(p[0],p[1]);
 	if(L==R){
 		for(int i:tmp){
+<<<<<<< HEAD
 			// cerr<<"! "<<L<<' '<<i<<endl;
+=======
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
 			if(lst[i]==now[i]) continue ;
 			upd[L].push_back({i,now[i]});
 			lst[i]=now[i];
 		}
 		tmp.clear();
+<<<<<<< HEAD
 		// for(int i=1;i<=m;i++) cerr<<now[i]<<' ';cerr<<endl;
+=======
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
 	}else{
 		int mid=L+R>>1;
 		Conquer(x<<1,L,mid);
@@ -116,6 +129,10 @@ inline void Modify(int x,int pos,ll k){
 	PushUp(x);
 }
 inline array<ll,2> Query(int x,int l,int r,ll k){
+<<<<<<< HEAD
+=======
+	if(l>r) return {0,0};
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
 	if(l<=tr[x].l&&tr[x].r<=r) return {Calc(x,k),max(k,tr[x].mx)};
 	int mid=tr[x].l+tr[x].r>>1;
 	if(r<=mid) return Query(x<<1,l,r,k);
@@ -123,7 +140,10 @@ inline array<ll,2> Query(int x,int l,int r,ll k){
 	else{
 		auto lv=Query(x<<1,l,r,k);
 		auto rv=Query(x<<1|1,l,r,lv[1]);
+<<<<<<< HEAD
 		// cerr<<x<<" : "<<l<<' '<<r<<" | "<<tr[x].l<<' '<<tr[x].r<<" | "<<lv[0]<<' '<<lv[1]<<" | "<<rv[0]<<' '<<rv[1]<<endl;
+=======
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
 		return {lv[0]+rv[0],rv[1]};
 	}
 }
@@ -139,7 +159,10 @@ signed main(){
 		else if(op[i]==2) ar[i].resize(1);
 		else ar[i].resize(4);
 		for(int &x:ar[i]) cin>>x;
+<<<<<<< HEAD
 		// cerr<<op[i]<<" : ";for(int x:ar[i]) cerr<<x<<' ';cerr<<endl;
+=======
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
 	}
 
 	for(int i=1;i<=q;i++){
@@ -153,6 +176,7 @@ signed main(){
 		}else if(op[i]==2){
 			id[i]=ar[i][0];
 			ed[id[i]]=i-1;
+<<<<<<< HEAD
 			// cerr<<i<<" : "<<id[i]<<endl;
 		}
 	}
@@ -161,6 +185,15 @@ signed main(){
 	for(int i=1;i<=m;i++) lst[i]=now[i]=i;
 	Conquer(1,1,q);
 
+=======
+		}
+	}
+	Init();
+	for(int i=1;i<=n;i++) Insert(1,1,q,st[i],ed[i],eu[i],ev[i]);
+	for(int i=1;i<=m;i++) lst[i]=now[i]=i;
+	Conquer(1,1,q);
+	
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
 	Build(1,1,m);
 	for(int i=1;i<=q;i++){
 		if(op[i]==3){
@@ -174,6 +207,7 @@ signed main(){
 			ans=1ll*(mxl-mnl+1)*(mxr-mnr+1);
 			int len=max(0,(min(mxl,mxr)-max(mnl,mnr)+1));
 			ans-=1ll*len*(len-1)/2;
+<<<<<<< HEAD
 			// cerr<<"* "<<i<<endl;
 			// for(int j=1;j<=m;j++) cout<<Query(1,j,j,0)[0]<<' ';cout<<endl;
 			// cout<<" -> "<<ans<<' '<<Query(1,1,mxr,mnl-1)[0]<<' '<<1ll*mxr*(mnl-1)<<endl;
@@ -187,6 +221,14 @@ signed main(){
 			cout<<ans<<endl;
 		}else for(auto p:upd[i]) Modify(1,p[0],p[1])/* ,cerr<<i<<" : "<<p[0]<<' '<<p[1]<<endl */;
 		// cout<<tr[1].mx<<" / "<<tr[1].sum<<endl;
+=======
+			ans-=Query(1,1,mxr,mnl-1)[0]-1ll*mxr*(mnl-1);
+			ans+=Query(1,1,mnr-1,mnl-1)[0]-1ll*(mnr-1)*(mnl-1);
+			ans+=Query(1,1,mxr,mxl)[0]-1ll*mxr*mxl;
+			ans-=Query(1,1,mnr-1,mxl)[0]-1ll*(mnr-1)*mxl;
+			cout<<ans<<endl;
+		}else for(auto p:upd[i]) Modify(1,p[0],p[1]);
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
 	}
 
 	return 0;

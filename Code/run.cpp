@@ -1,6 +1,10 @@
 #include <iostream>
 #include <cstdlib>
+<<<<<<< HEAD
 #include <bits/stdc++.h>
+=======
+#include <ctime>
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
 
 using namespace std;
 
@@ -14,6 +18,7 @@ int main(int argc, char* argv[]) {
     std::string filename = argv[1]; // 获取文件名
     string command;
 
+<<<<<<< HEAD
     cout << "Src = " << argv[1] <<endl;
 
     if(argc == 2) {
@@ -27,11 +32,25 @@ int main(int argc, char* argv[]) {
         }
     }else{
         cout << "Incorrect format ." << endl;
+=======
+    if(argc==2){
+        command = filename + ".exe < " + filename + ".in > "+filename+".out";
+    }else if(argc==3){
+        string tmp=argv[2];
+        if(tmp=="-w") command = filename + ".exe";
+        else{
+            cout<<"Incorrect format ."<<endl;
+            return 1;
+        }
+    }else{
+        cout<<"Incorrect format ."<<endl;
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
         return 1;
     }
 
     std::cout << "Running " << filename << "..." << std::endl;
 
+<<<<<<< HEAD
     int t = clock();
 
     // 使用system函数执行编译命令
@@ -42,6 +61,14 @@ int main(int argc, char* argv[]) {
     cout << "Real Time : "<< clock() - t << " ms"<< endl;
 
     return 0;
+=======
+    // 使用system函数执行编译命令
+    int tm = clock();
+    int result = system(command.c_str());
+
+    cout << "Returned " << result << "." << endl;
+    cout << "Real time : " << clock() - tm << "ms." << endl;
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
 }
 
 

@@ -2,6 +2,7 @@
 
 using namespace std;
 
+<<<<<<< HEAD
 #define fir(x) x.first
 #define sec(x) x.second
 const int N=2e5+9;
@@ -116,5 +117,10 @@ signed main(){
 
     for(int i=1;i<=q;i++) cout<<ans[i]<<endl;
 
+=======
+const int N=2e5+9;
+
+signed main(){
+>>>>>>> d8147174aa15e80698100c4d67760eaf3e5689db
     return 0;
 }
